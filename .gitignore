@@ -1,0 +1,29 @@
+# OpenKnowledge regenerates its built-in project skill on every open, and
+# different app builds version-stamp it differently. It is a per-machine
+# artifact — keep it out of git so teammates don't collide under auto-sync.
+.claude/skills/open-knowledge/
+.cursor/skills/open-knowledge/
+.codex/skills/open-knowledge/
+.github/skills/open-knowledge/
+.opencode/skills/open-knowledge/
+.pi/skills/open-knowledge/
+
+# Binary files, media  
+*.bin
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.mp4
+*.mp3
+
+# Pi
+.pi/
+.pi-lens/
+.obsidian
+.ck
+.local
+__pycache__/
+*.pyc
+**/.DS_Store
+docfence.egg-info/

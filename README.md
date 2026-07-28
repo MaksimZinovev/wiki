@@ -1,2 +1,2 @@
 # digital-garden
-My digital garden. Collection of my notes shared publicly.
+My digital garden. Collection of my notes and wiki files.

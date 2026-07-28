@@ -1,0 +1,5 @@
+title: Concepts
+description: "Durable ideas and definitions, one file per concept. Each doc carries `type: concept` in its frontmatter. Link related concepts so the graph builds itself."
+tags:
+  - concept
+  - okf

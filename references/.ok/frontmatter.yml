@@ -1,0 +1,5 @@
+title: References
+description: "External sources and citations you rely on, one file per source. Each doc carries `type: reference`. Link the docs that cite a reference so the evidence trail stays navigable."
+tags:
+  - reference
+  - okf
