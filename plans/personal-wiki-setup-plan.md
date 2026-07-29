@@ -115,31 +115,6 @@ See [wiki-architecture](../concepts/wiki-architecture.md) for the full concept d
 
 ---
 
-```html preview
-<div style="font-family:system-ui,sans-serif;padding:20px">
-  <div id="cards" style="display:flex;gap:14px;flex-wrap:wrap"></div>
-  <script>
-    var stats = [
-      ['Total tasks', '171', '180 raw − 9 superseded', 'var(--chart-2)'],
-      ['Completed', '29', '17% of plan', 'var(--chart-1)'],
-      ['Remaining', '142', 'next: 1.6 backup · 1.3-1.4 QMD', 'var(--chart-5)']
-    ];
-    document.getElementById('cards').innerHTML = stats.map(function (s) {
-      return '<div style="flex:1;min-width:150px;padding:16px;background:var(--card);' +
-        'color:var(--card-foreground);border:1px solid var(--border);' +
-        'border-radius:var(--radius)">' +
-        '<div style="font-size:13px;color:var(--muted-foreground)">' + s[0] + '</div>' +
-        '<div style="font-size:26px;font-weight:700;margin-top:4px">' + s[1] + '</div>' +
-        '<div style="font-size:12px;font-weight:600;margin-top:4px;color:' + s[3] + '">' +
-        s[2] + '</div>' +
-        '</div>';
-    }).join('');
-  </script>
-</div>
-```
-
-
-
 ## Phase 1: Foundation — Repos & Tools (Week 1)
 
 > Goal: Clone the garden repo, configure OpenKnowledge, install QMD, verify Vercel site works.
