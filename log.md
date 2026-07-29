@@ -7,6 +7,10 @@ description: Append-only audit trail of changes to this knowledge base.
 
 Append-only audit trail. Add one dated entry per turn that creates, edits, or restructures content. The knowledge-base skill describes what to log and the entry shape.
 
+## 2026-07-30: Reusable note — auto-updating progress card
+
+- Saved the stat-card hook as a how-to note: [auto-updating-progress-card-pre-commit-hook](./notes/auto-updating-progress-card-pre-commit-hook.md) — full script, install one-liner, reuse checklist, verification record; linked from [index](./index.md)
+
 ## 2026-07-30: Progress stat card + auto-update hook
 
 - Updated the plan's stat card to real counts: [personal-wiki-setup-plan](./plans/personal-wiki-setup-plan.md) — total 171 (180 raw − 9 superseded), completed 29, remaining 142
