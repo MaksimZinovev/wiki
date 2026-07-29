@@ -26,9 +26,9 @@ type: plan
   <div id="cards" style="display:flex;gap:14px;flex-wrap:wrap"></div>
   <script>
     var stats = [
-      ['Active users', '12,480', '+8.2% MoM', 'var(--chart-2)'],
-      ['Revenue', '$48.2k', '+3.1% MoM', 'var(--chart-1)'],
-      ['Churn', '2.4%', '-0.5% MoM', 'var(--chart-5)']
+      ['Total tasks', '171', '180 raw − 9 superseded', 'var(--chart-2)'],
+      ['Completed', '29', '17% of plan', 'var(--chart-1)'],
+      ['Remaining', '142', 'next: 1.6 backup · 1.3-1.4 QMD', 'var(--chart-5)']
     ];
     document.getElementById('cards').innerHTML = stats.map(function (s) {
       return '<div style="flex:1;min-width:150px;padding:16px;background:var(--card);' +
@@ -120,9 +120,9 @@ See [wiki-architecture](../concepts/wiki-architecture.md) for the full concept d
   <div id="cards" style="display:flex;gap:14px;flex-wrap:wrap"></div>
   <script>
     var stats = [
-      ['Active users', '12,480', '+8.2% MoM', 'var(--chart-2)'],
-      ['Revenue', '$48.2k', '+3.1% MoM', 'var(--chart-1)'],
-      ['Churn', '2.4%', '-0.5% MoM', 'var(--chart-5)']
+      ['Total tasks', '171', '180 raw − 9 superseded', 'var(--chart-2)'],
+      ['Completed', '29', '17% of plan', 'var(--chart-1)'],
+      ['Remaining', '142', 'next: 1.6 backup · 1.3-1.4 QMD', 'var(--chart-5)']
     ];
     document.getElementById('cards').innerHTML = stats.map(function (s) {
       return '<div style="flex:1;min-width:150px;padding:16px;background:var(--card);' +
