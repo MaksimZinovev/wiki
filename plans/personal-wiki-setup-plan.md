@@ -1,33 +1,81 @@
+---
+description: "8-week plan for a complete system: OpenKnowledge (central wiki repo) + QMD (search) + Pi agent (AI tasks) + Vercel/GH Pages (publishing). Two-repo architecture: wiki repo as source of truth, my-digital-garden as publishing consumer."
+generated:
+  at: 2026-07-30
+  by: human:maksi
+status: draft
+tags:
+  - plan
+  - wiki
+  - okf
+  - architecture
+title: Personal Wiki Setup — Phased Plan
+type: plan
+---
+
 # Personal Wiki Setup — Phased Plan
 
-> 8-week plan for a complete system: OpenKnowledge (main engine) + QMD (search) + Pi agent (AI tasks) + Vercel/GH Pages (publishing). Relaxed pace, 2-4 hrs/week. Each task is 15-60 min.
+> 8-week plan for a complete system: OpenKnowledge (central wiki repo) + QMD (search) + Pi agent (AI tasks) + Vercel/GH Pages (publishing). Relaxed pace, 2-4 hrs/week. Each task is 15-60 min.
+
+---
+
+## Architecture Overview
+
+The system separates **notes** (the source of truth) from **publishing** (how notes reach the web). One central wiki repo feeds multiple static-site consumers.
+
+```mermaid
+graph LR
+    subgraph Source of Truth
+        Wiki["wiki repo<br/>OKF markdown"]
+    end
+    subgraph Consumers
+        DG["my-digital-garden<br/>11ty + Vercel"]
+        Quartz["Quartz<br/>(future)"]
+        Astro["Astro<br/>(future)"]
+    end
+    Wiki -->|"copy script"| DG
+    Wiki -.-|future| Quartz
+    Wiki -.-|future| Astro
+```
+
+| Repo | Path | Role |
+|------|------|------|
+| **wiki** | `C:\Users\maksi\repos\wiki` | Central notes — source of truth (OKF-conformant) |
+| **my-digital-garden** | `C:\Users\maksi\repos\my-digital-garden` | Publishing consumer (current) — 11ty + Vercel |
+| (future) | — | Publishing consumer — Quartz or Astro |
+
+See [wiki-architecture](../concepts/wiki-architecture.md) for the full concept doc.
 
 ---
 
 ## Current State
 
 - **iCloud Obsidian vault**: 1,686 .md files, git repo, many Obsidian plugins
-- **my-digital-garden repo**: `https://github.com/MaksimZinovev/my-digital-garden.git` — 11ty-based, deployed to Vercel at `https://my-digital-garden-rouge.vercel.app/`
-- **OpenKnowledge**: Already installed (desktop app)
+- **wiki repo**: `C:\Users\maksi\repos\wiki` — central notes repo, OKF-conformant (scaffolded with OKF starter pack: `concepts/`, `references/`, `notes/`, `external-sources/`, `research/`, `articles/`), managed by OpenKnowledge
+- **my-digital-garden repo**: `https://github.com/MaksimZinovev/my-digital-garden.git` — 11ty-based publishing consumer, deployed to Vercel at `https://my-digital-garden-rouge.vercel.app/`
+- **OpenKnowledge**: Already installed (desktop app), managing the wiki repo
 - **Pi agent**: This AI coding agent (file ops, bash, MCP, web search)
 - **Obsidian plugins installed**: linter, auto-link-title, auto-note-mover, dataview, metadata-menu, templater, brat (beta plugin installer)
 
 ## Target State
 
-- OpenKnowledge manages the my-digital-garden repo (public notes)
+- OpenKnowledge manages the **wiki repo** as the central source of truth (OKF-conformant)
 - QMD indexes the entire iCloud vault for local search (1,686 files)
 - Pi agent helps with migration, enrichment, lint, auto-tag/link
-- Notes published via Vercel site (existing) or Quartz (later)
+- Notes published via **my-digital-garden** (11ty + Vercel) — copy script syncs wiki → garden at build time
+- Future: additional consumers (Quartz, Astro) can read from the same wiki repo without changing notes
 - `"dg-publish": true` in JSON frontmatter controls public/private split (Digital Garden plugin convention)
 - Automations: daily maintenance (Task Scheduler), weekly lint (Pi session)
 - Published site has: search, graph view, tags, categories, backlinks
 
 ## Key Decisions
 
-- **Repo**: Use existing `my-digital-garden` repo, migrate gradually from iCloud vault
-- **Publishing**: Keep existing Vercel site working from day 1; evaluate Quartz later
+- **Central repo**: `wiki` repo (`C:\Users\maksi\repos\wiki`) is the source of truth — OKF-conformant, managed by OpenKnowledge
+- **Publishing consumer**: `my-digital-garden` repo — 11ty + Vercel, reads from wiki via build-time copy script
+- **Publishing**: Keep existing Vercel site working from day 1; evaluate Quartz/Astro later (notes unchanged)
+- **Sync mechanism**: Copy script (build-time) — filters by `dg-publish: true`, copies wiki notes → my-digital-garden/src/site/notes/
 - **Public/private**: `"dg-publish": true` in JSON frontmatter (existing Digital Garden convention — NOT `publish: true` in YAML)
-- **Frontmatter format**: JSON-style (existing convention) — e.g. `{"dg-publish":true,"permalink":"/topic/note-name/","tags":["tag1","tag2"]}`
+- **Frontmatter format**: Wiki repo uses YAML (OKF convention); publishing consumer uses JSON (Digital Garden plugin convention). Copy script converts as needed.
 - **QMD scope**: Index entire iCloud vault (all 1,686 files)
 - **AI agent**: Pi (not Claude Code)
 
