@@ -25,14 +25,11 @@ Two files in `~/.pi/agent/` (Windows: `C:\Users\<you>\.pi\agent\`):
 Then **restart the ACP chat** (close it, click *New Pi ACP chat* again) — `pi --mode rpc` reads `models.json` only at startup.
 
 ## Entry fields
-- `id` — the Ollama model tag, cloud models end in `:cloud` (e.g. `kimi-k3:cloud`).
-- `contextWindow` — from the model's Ollama library page or `ollama show`.
-- `input` — `["text"]`, or `["text","image"]` if the model has vision.
-- `reasoning` — `true` if the model supports thinking.
-- `_launch` — optional. Set `true` and `ollama launch pi` may manage/replace it; **omit it** to mark the entry user-managed so it survives `ollama launch pi --config` re-runs.
+- `id` (Ollama tag; cloud ends `:cloud`); `contextWindow` (library page or `ollama show`); `input` `["text"]`/`["text","image"]`; `reasoning` `true` if thinking-capable.
+- **Omit `_launch`** so the entry is user-managed and survives `ollama launch pi --config`.
 
 ## Context
-- The ACP **Model dropdown lists exactly `providers.ollama.models[]`** from `models.json` — that's the only file the selector reads.
-- Discover capabilities from `https://ollama.com/library/<model>` (tags: `vision tools thinking cloud`) or `curl http://127.0.0.1:11434/api/show -d '{"model":"<id>"}'`.
-- **Blessed alternative:** `ollama launch pi --model <id>:cloud --config` writes the entry for you with capability detection.
+- ACP **Model dropdown = `providers.ollama.models[]`** from `models.json` — the only file the selector reads.
+- Capabilities: `ollama.com/library/<model>` or `curl http://127.0.0.1:11434/api/show -d '{"model":"<id>"}'`.
+- **Blessed alternative:** `ollama launch pi --model <id>:cloud --config`.
 - See [[pi-acp-ollama-connection-error]] for why the daemon must be running first.
