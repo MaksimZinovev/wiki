@@ -90,32 +90,62 @@ See [wiki-architecture](../concepts/wiki-architecture.md) for the full concept d
 
 ---
 
+```html preview
+<div style="font-family:system-ui,sans-serif;padding:20px">
+  <div id="cards" style="display:flex;gap:14px;flex-wrap:wrap"></div>
+  <script>
+    var stats = [
+      ['Active users', '12,480', '+8.2% MoM', 'var(--chart-2)'],
+      ['Revenue', '$48.2k', '+3.1% MoM', 'var(--chart-1)'],
+      ['Churn', '2.4%', '-0.5% MoM', 'var(--chart-5)']
+    ];
+    document.getElementById('cards').innerHTML = stats.map(function (s) {
+      return '<div style="flex:1;min-width:150px;padding:16px;background:var(--card);' +
+        'color:var(--card-foreground);border:1px solid var(--border);' +
+        'border-radius:var(--radius)">' +
+        '<div style="font-size:13px;color:var(--muted-foreground)">' + s[0] + '</div>' +
+        '<div style="font-size:26px;font-weight:700;margin-top:4px">' + s[1] + '</div>' +
+        '<div style="font-size:12px;font-weight:600;margin-top:4px;color:' + s[3] + '">' +
+        s[2] + '</div>' +
+        '</div>';
+    }).join('');
+  </script>
+</div>
+```
+
+
+
 ## Phase 1: Foundation — Repos & Tools (Week 1)
 
 > Goal: Clone the garden repo, configure OpenKnowledge, install QMD, verify Vercel site works.
 
 ### 1.1 Clone my-digital-garden repo ✅ DONE
+
 - [x] Clone `https://github.com/MaksimZinovev/my-digital-garden.git` to `C:\Users\maksi\repos\my-digital-garden`
 - [x] Verify the repo structure — found `src/site/notes/` (112 notes), `.eleventy.js`, `vercel.json`, `src/helpers/`, `src/site/`
 - [x] Check which notes are already published — all 112 notes have `"dg-publish":true` in JSON frontmatter (Digital Garden plugin convention, NOT `publish: true`)
 - [x] Run `git log --oneline -20` — 1,002 commits, last commit Jan 6 2024
 
-### 1.2 Verify Vercel site works (10 min)
-- [ ] Visit `https://my-digital-garden-rouge.vercel.app/` — confirm it loads
-- [ ] Check what notes are currently visible on the site
-- [ ] Make a small test edit to a published note, push to GitHub, verify it appears on Vercel
+### 1.2 Verify Vercel site works ✅ DONE
+
+- [x] Visited `https://my-digital-garden-rouge.vercel.app/` — home, git MOC, note pages all render (graph, backlinks, images work)
+- [x] Checked visible notes — home shows 4 MOCs (cypress, playwright, git, javascript); git MOC lists all git notes + connected pages
+- [x] Test publish round-trip — pushed test edit → build FAILED (root cause: Node.js 18.x discontinued on Vercel) → fixed via [PR #24](https://github.com/MaksimZinovev/my-digital-garden/pull/24) (`engines: node >=22` + reverted test edits) → merged → Vercel build green (29s) → live site serves updated note. Verified locally first: `npm install` + `npm run build` exit 0 on Node v24.15.0 (117 files / 133 assets).
+- Note: `npm install` reports 51 vulnerabilities (8 critical) in 2023-era deps — not blocking; separate dependency-refresh pass if desired.
 
 ### 1.3 Install QMD (30 min)
+
 - [ ] Install Node.js 22+ if not already installed (`node --version`)
 - [ ] Run `npm install -g @tobilu/qmd`
 - [ ] Verify: `qmd --version`
 - [ ] Run `qmd doctor` to check system requirements
 
 ### 1.4 Index the iCloud vault with QMD (30 min)
+
 - [ ] Add collection: `qmd collection add "C:\Users\maksi\iCloudDrive\iCloud~md~obsidian\obsidian-sync" --name vault`
 - [ ] Add context: `qmd context add qmd://vault "My full Obsidian knowledge base — all notes, private and public"`
 - [ ] Index: `qmd update`
-- [ ] Embed: `qmd embed` (this downloads ~2GB of local models on first run, takes 10-20 min)
+- [ ] Embed: `qmd embed` (this downloads \~2GB of local models on first run, takes 10-20 min)
 - [ ] Test search: `qmd query "karpathy wiki knowledge management"`
 - [ ] Test search: `qmd search "open brain"`
 - [ ] Record stats: `qmd status`

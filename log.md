@@ -7,6 +7,14 @@ description: Append-only audit trail of changes to this knowledge base.
 
 Append-only audit trail. Add one dated entry per turn that creates, edits, or restructures content. The knowledge-base skill describes what to log and the entry shape.
 
+## 2026-07-30: Vercel pipeline fixed — Task 1.2 verified
+
+- Test publish round-trip on my-digital-garden revealed Node.js 18.x discontinued; fixed via branch + PR #24 (`engines: node >=22`), merged, Vercel builds green (29s prod, 32s preview), live site verified serving updated content
+- Local build verified first: `npm install` + `npm run build` exit 0 on Node v24.15.0 (117 files / 133 assets)
+- Marked Task 1.2 ✅ DONE in [personal-wiki-setup-plan](./plans/personal-wiki-setup-plan.md)
+- Committed the plan-file deletion in my-digital-garden (plan lives here in [plans/](./plans/))
+- Open follow-ups: 1.6 backup iCloud vault, 1.3-1.4 QMD install + index, Phase 3 first migration batch
+
 ## 2026-07-30: Frontmatter conventions, folder defaults, RESOLVER
 
 - Created [frontmatter-conventions](./concepts/frontmatter-conventions.md) concept doc — YAML schema with `public: true/false` (replaces `dg-publish`), copy script transformation rules, tag conventions, per-folder defaults
