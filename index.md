@@ -5,6 +5,7 @@ The navigation hub for this knowledge base. Start with [welcome](./welcome.md), 
 ## Sections
 
 - [welcome](./welcome.md) — what this knowledge base is and how it is organized
+- [RESOLVER](./RESOLVER.md) — filing decision tree: where new notes go
 - [concepts/](./concepts/) — durable ideas and definitions (`type: concept`)
   - [wiki-architecture](./concepts/wiki-architecture.md) — central wiki repo + multiple publishing consumers
   - [frontmatter-conventions](./concepts/frontmatter-conventions.md) — YAML schema, `public` flag, copy script transformation
