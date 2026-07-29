@@ -1,3 +1,18 @@
+---
+description: Google Cloud Blog post announcing OKF v0.1 — the open specification formalizing the LLM-wiki pattern into a portable, interoperable format.
+generated:
+  at: 2026-07-29
+  by: human:maksi
+resource: https://cloud.google.com/blog/products/data-analytics/how-the-open-knowledge-format-can-improve-data-sharing
+tags:
+  - okf
+  - google
+  - announcement
+  - knowledge-management
+title: Introducing the Open Knowledge Format — Google Cloud Blog
+type: source
+---
+
 # How the Open Knowledge Format can improve data sharing | Google Cloud Blog
 
 Data Analytics

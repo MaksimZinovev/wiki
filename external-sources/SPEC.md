@@ -1,3 +1,17 @@
+---
+description: The OKF specification — a vendor-neutral, agent- and human-friendly standard for representing knowledge as markdown files with YAML frontmatter.
+generated:
+  at: 2026-07-29
+  by: human:maksi
+resource: https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md
+tags:
+  - okf
+  - specification
+  - standard
+title: Open Knowledge Format v0.2 Specification
+type: source
+---
+
 # Open Knowledge Format (OKF)
 
 **Version 0.2**

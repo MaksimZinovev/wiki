@@ -1,3 +1,17 @@
+---
+description: OKF repo README — install, usage, sample bundles, the reference agent that produces OKF bundles, and the visualizer.
+generated:
+  at: 2026-07-29
+  by: human:maksi
+resource: https://github.com/GoogleCloudPlatform/knowledge-catalog/tree/main/okf
+tags:
+  - okf
+  - readme
+  - reference-agent
+title: Open Knowledge Format — Repository README
+type: source
+---
+
 # Open Knowledge Format (OKF)
 
 ### 📖 [Read the Open Knowledge Format v0.2 specification → SPEC.md](SPEC.md)
