@@ -178,8 +178,10 @@ See [wiki-architecture](../concepts/wiki-architecture.md) for the full concept d
 - [x] Each wiki folder has `.ok/frontmatter.yml` with description + tags
 - [ ] Document the structure in `wiki/README.md` (update existing)
 
-### 2.3 Define frontmatter conventions (20 min)
-- [ ] Create a frontmatter template for all notes — use JSON format (existing convention):
+### 2.3 Define frontmatter conventions ✅ DONE
+- [x] Defined YAML frontmatter schema — see [frontmatter-conventions](../concepts/frontmatter-conventions.md). Key decision: `public: true/false` (YAML, vendor-neutral) replaces `dg-publish` (JSON). Copy script transforms YAML → JSON for my-digital-garden.
+- [x] Tag conventions: lowercase, hyphenated. OK reads YAML natively (OKF convention); no JSON in wiki repo.
+- [x] Original plan (JSON format) below — superseded by the YAML approach:
   ```json
   ---
   {"dg-publish":false,"permalink":"/topic/note-name/","tags":["tag1","tag2"],"type":"reference","date":"2025-01-15","source":"article"}
@@ -196,8 +198,9 @@ See [wiki-architecture](../concepts/wiki-architecture.md) for the full concept d
 - [ ] Configure OpenKnowledge templates per folder (`.ok/templates/*.md`)
 - [ ] Investigate: can OK read JSON frontmatter, or does it require YAML? (check OK docs)
 
-### 2.4 Create folder frontmatter for OK (20 min)
-- [ ] **Note**: OK `.ok/frontmatter.yml` goes at repo root. OK content folders live inside `src/site/notes/`. Verify OK can read frontmatter rules from repo root while managing content in `src/site/notes/`.
+### 2.4 Create folder frontmatter for OK ✅ DONE
+- [x] Updated all 7 folder `.ok/frontmatter.yml` files with default `type` and `public: false` (concepts, references, notes, external-sources, research, articles, plans). See [frontmatter-conventions](../concepts/frontmatter-conventions.md) for the per-folder defaults table.
+- [x] Original plan (my-digital-garden paths) below — superseded by wiki repo folder structure:
 - [ ] Write `.ok/frontmatter.yml` for `src/site/notes/external-sources/`:
   ```yaml
   description: "Raw sources saved verbatim — URLs, PDFs, transcripts. Immutable. Produced by ingest."
@@ -216,8 +219,9 @@ See [wiki-architecture](../concepts/wiki-architecture.md) for the full concept d
   ```
 - [ ] Investigate: does OK support per-subfolder frontmatter rules (e.g. `src/site/notes/resources/pkm/` vs `src/site/notes/resources/ai/`)?
 
-### 2.5 Create RESOLVER.md — filing decision tree (30 min)
-- [ ] Write `RESOLVER.md` at garden repo root:
+### 2.5 Create RESOLVER.md — filing decision tree ✅ DONE
+- [x] Created [RESOLVER.md](../RESOLVER.md) at wiki repo root — 8-case filing decision tree + publishing checklist. `type: guide`, `public: false`.
+- [x] Original plan (garden repo root) below — moved to wiki repo:
   ```markdown
   # Filing Decision Tree
   

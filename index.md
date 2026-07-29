@@ -7,6 +7,7 @@ The navigation hub for this knowledge base. Start with [welcome](./welcome.md), 
 - [welcome](./welcome.md) — what this knowledge base is and how it is organized
 - [concepts/](./concepts/) — durable ideas and definitions (`type: concept`)
   - [wiki-architecture](./concepts/wiki-architecture.md) — central wiki repo + multiple publishing consumers
+  - [frontmatter-conventions](./concepts/frontmatter-conventions.md) — YAML schema, `public` flag, copy script transformation
 - [references/](./references/) — sources and citations you rely on (`type: reference`)
 - [notes/](./notes/) — working notes and observations (`type: note`)
 - [external-sources/](./external-sources/) — raw sources saved verbatim (`type: source`) — OKF blog post, README, and SPEC
