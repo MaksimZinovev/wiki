@@ -19,6 +19,31 @@ type: plan
 
 ---
 
+
+
+```html preview
+<div style="font-family:system-ui,sans-serif;padding:20px">
+  <div id="cards" style="display:flex;gap:14px;flex-wrap:wrap"></div>
+  <script>
+    var stats = [
+      ['Active users', '12,480', '+8.2% MoM', 'var(--chart-2)'],
+      ['Revenue', '$48.2k', '+3.1% MoM', 'var(--chart-1)'],
+      ['Churn', '2.4%', '-0.5% MoM', 'var(--chart-5)']
+    ];
+    document.getElementById('cards').innerHTML = stats.map(function (s) {
+      return '<div style="flex:1;min-width:150px;padding:16px;background:var(--card);' +
+        'color:var(--card-foreground);border:1px solid var(--border);' +
+        'border-radius:var(--radius)">' +
+        '<div style="font-size:13px;color:var(--muted-foreground)">' + s[0] + '</div>' +
+        '<div style="font-size:26px;font-weight:700;margin-top:4px">' + s[1] + '</div>' +
+        '<div style="font-size:12px;font-weight:600;margin-top:4px;color:' + s[3] + '">' +
+        s[2] + '</div>' +
+        '</div>';
+    }).join('');
+  </script>
+</div>
+```
+
 ## Architecture Overview
 
 The system separates **notes** (the source of truth) from **publishing** (how notes reach the web). One central wiki repo feeds multiple static-site consumers.
