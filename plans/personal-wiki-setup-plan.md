@@ -120,14 +120,14 @@ See [wiki-architecture](../concepts/wiki-architecture.md) for the full concept d
 - [ ] Test search: `qmd search "open brain"`
 - [ ] Record stats: `qmd status`
 
-### 1.5 Configure OpenKnowledge for the garden repo (30 min)
-- [ ] Open OpenKnowledge desktop app
-- [ ] Open the `C:\Users\maksi\repos\my-digital-garden` folder as the knowledge base
-- [ ] **Important**: OK manages the repo root, but content lives in `src/site/notes/`. When OK creates folders (external-sources, research, articles), they should go inside `src/site/notes/`, not repo root. Check if OK supports custom content paths.
-- [ ] Initialize the Knowledge base starter pack (`ok seed --pack knowledge-base`) — verify where it creates folders
-- [ ] If OK creates folders at repo root: move them to `src/site/notes/` and update OK config
-- [ ] Verify `.ok/frontmatter.yml` created (at repo root for OK, or per-folder inside `src/site/notes/`)
-- [ ] Verify OK MCP server is running (check if Pi can see `mcp__open-knowledge__*` tools)
+### 1.5 Configure OpenKnowledge for the wiki repo ✅ DONE
+- [x] Open OpenKnowledge desktop app
+- [x] Open the `C:\Users\maksi\repos\wiki` folder as the knowledge base
+- [x] OKF starter pack scaffolded: `concepts/`, `references/`, `notes/`, `external-sources/`, `research/`, `articles/` — each with `.ok/frontmatter.yml`
+- [x] OKF skill installed (`open-knowledge-pack-okf`) + knowledge-base skill available
+- [x] Reserved files present: `index.md` (navigation hub), `log.md` (change history) — both frontmatter-free
+- [x] Verify OK MCP server is running (Pi can see `ok_*` / `mcp__open-knowledge__*` tools)
+- [x] `plans/` folder created with `.ok/frontmatter.yml` for planning docs (`type: plan`)
 
 ### 1.6 Back up the iCloud vault (15 min)
 - [ ] Create a tagged backup: `cd "C:\Users\maksi\iCloudDrive\iCloud~md~obsidian\obsidian-sync" && git tag backup-pre-migration-$(date +%Y%m%d)`
@@ -146,40 +146,37 @@ See [wiki-architecture](../concepts/wiki-architecture.md) for the full concept d
 - [x] All 112 notes already have `"dg-publish":true` in JSON frontmatter
 - [x] Decision: keep existing `src/site/notes/` structure, add OK content folders inside it
 
-### 2.2 Define folder structure for the garden repo (30 min)
-- [ ] **Critical constraint**: 11ty reads from `src/site/` as input dir. The link resolver hardcodes `./src/site/notes/` as the note root. All publishable content MUST be inside `src/site/notes/`.
-- [ ] Map out the target directory structure:
+### 2.2 Define folder structure for the wiki repo ✅ DONE
+- [x] The wiki repo is the central source of truth (OKF-conformant). The my-digital-garden repo is a publishing consumer — it only receives notes via the copy script (Phase 5.4).
+- [x] Wiki repo structure (OKF): 
   ```
-  my-digital-garden/
-  ├── .ok/                     → OK configuration (repo root, not published)
-  │   └── frontmatter.yml      → per-folder frontmatter rules
-  ├── plans/                   → this plan (not published)
-  ├── log.md                   → OK audit trail (repo root, not published)
-  ├── src/
-  │   └── site/
-  │       ├── notes/            → ALL published content lives here
-  │       │   ├── git/           → existing topic
-  │       │   ├── playwright-*/  → existing topics
-  │       │   ├── cypress-*/     → existing topics
-  │       │   ├── javascript/   → existing topic
-  │       │   ├── resources/     → NEW: migrated from iCloud
-  │       │   │   ├── pkm/       → knowledge management
-  │       │   │   ├── ai/        → AI research
-  │       │   │   └── ...
-  │       │   ├── external-sources/  → NEW: OK ingest output
-  │       │   ├── research/      → NEW: OK research output
-  │       │   └── articles/     → NEW: OK consolidate output
-  │       ├── img/              → images (existing)
-  │       ├── scripts/          → client-side JS (existing)
-  │       └── styles/           → CSS (existing)
-  ├── .eleventy.js             → 11ty config (existing)
-  ├── .eleventyignore           → excludes netlify/functions (existing)
-  ├── .env                     → site config vars (existing)
-  ├── vercel.json              → Vercel deploy config (existing)
-  └── package.json             → 11ty + deps (existing)
+  wiki/                             → central notes repo (source of truth)
+  ├── .ok/                          → OK configuration
+  │   ├── config.yml                → project config
+  │   ├── skills/                   → OK skills (okf, knowledge-base packs)
+  │   └── templates/                → per-folder doc templates
+  ├── .okignore                     → OK index exclusions
+  ├── index.md                      → navigation hub (reserved, no frontmatter)
+  ├── log.md                        → change history (reserved, no frontmatter)
+  ├── concepts/                     → durable ideas (type: concept)
+  ├── references/                   → external citations (type: reference)
+  ├── notes/                        → working notes (type: note)
+  ├── external-sources/             → raw sources, verbatim (type: source)
+  ├── research/                     → provisional analysis (type: research)
+  ├── articles/                     → canonical knowledge (type: article)
+  ├── plans/                        → planning documents (type: plan)
+  └── images/                       → image assets
   ```
-- [ ] Create new folders: `src/site/notes/resources/`, `src/site/notes/resources/pkm/`, `src/site/notes/external-sources/`, `src/site/notes/research/`, `src/site/notes/articles/`
-- [ ] Document the structure in a `README.md` at repo root
+- [x] Publishing consumer structure (my-digital-garden, unchanged):
+  ```
+  my-digital-garden/                → publishing consumer (11ty + Vercel)
+  ├── src/site/notes/               → notes copied here by sync script
+  ├── src/site/img/                  → images
+  ├── .eleventy.js                  → 11ty config (existing)
+  └── vercel.json                    → Vercel deploy config (existing)
+  ```
+- [x] Each wiki folder has `.ok/frontmatter.yml` with description + tags
+- [ ] Document the structure in `wiki/README.md` (update existing)
 
 ### 2.3 Define frontmatter conventions (20 min)
 - [ ] Create a frontmatter template for all notes — use JSON format (existing convention):
@@ -396,15 +393,39 @@ See [wiki-architecture](../concepts/wiki-architecture.md) for the full concept d
   | Obsidian plugin | Required | Not required (file-based) |
 - [ ] Decision: keep current setup for now (simpler, already working), evaluate Quartz later when vault grows
 
-### 5.4 Set up publishing workflow (20 min)
+### 5.4 Set up publishing workflow — copy script (30 min)
+- [ ] Create `C:\Users\maksi\repos\scripts\sync-wiki-to-garden.ps1`:
+  ```powershell
+  # Sync publishable notes from wiki repo to my-digital-garden
+  $wiki = "C:\Users\maksi\repos\wiki"
+  $garden = "C:\Users\maksi\repos\my-digital-garden\src\site\notes"
+  
+  # Copy .md files with dg-publish:true in frontmatter
+  Get-ChildItem -Path $wiki -Filter *.md -Recurse -Exclude index.md,log.md | ForEach-Object {
+      $content = Get-Content $_.FullName -Raw
+      if ($content -match '"dg-publish"\s*:\s*true') {
+          $relPath = $_.FullName.Substring($wiki.Length)
+          $dest = Join-Path $garden $relPath
+          New-Item -ItemType Directory -Force -Path (Split-Path $dest) | Out-Null
+          Copy-Item $_.FullName $dest -Force
+          Write-Host "Published: $relPath"
+      }
+  }
+  
+  # Copy images
+  Copy-Item -Path "$wiki\images\*" -Destination "$garden\..\img\user\" -Recurse -Force
+  ```
+- [ ] Test: run the script, verify notes appear in `my-digital-garden/src/site/notes/`
 - [ ] Document the publish workflow:
-  1. Write/edit note in OK (garden repo)
-  2. Set `"dg-publish":true` in frontmatter when ready
-  3. Commit and push to GitHub
-  4. Vercel auto-deploys (2-3 min)
-  5. Note appears on `https://my-digital-garden-rouge.vercel.app/`
-- [ ] For notes in the iCloud vault: copy to garden repo first, then publish
+  1. Write/edit note in OK (wiki repo)
+  2. Set `"dg-publish":true` in frontmatter when ready to publish
+  3. Run sync script (or let CI run it on push)
+  4. Commit and push my-digital-garden to GitHub
+  5. Vercel auto-deploys (2-3 min)
+  6. Note appears on `https://my-digital-garden-rouge.vercel.app/`
+- [ ] For notes in the iCloud vault: migrate to wiki repo first, then publish
 - [ ] Document which notes should be public vs private
+- [ ] Future improvement: run sync script in CI (GitHub Actions) on wiki repo push
 
 ### 5.5 Publish 10 more notes (30 min)
 - [ ] Pick 10 of the best-enriched notes from Phase 3
