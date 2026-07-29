@@ -26,8 +26,8 @@ type: plan
   <div id="cards" style="display:flex;gap:14px;flex-wrap:wrap"></div>
   <script>
     var stats = [
-      ['Total tasks', '171', '180 raw − 9 superseded', 'var(--chart-2)'],
-      ['Completed', '29', '17% of plan', 'var(--chart-1)'],
+      ['Total tasks', '171', '180 raw - 9 superseded', 'var(--chart-2)'],
+      ['Completed', '29', '16% of plan', 'var(--chart-1)'],
       ['Remaining', '142', 'next: 1.6 backup · 1.3-1.4 QMD', 'var(--chart-5)']
     ];
     document.getElementById('cards').innerHTML = stats.map(function (s) {

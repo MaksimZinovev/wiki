@@ -7,6 +7,11 @@ description: Append-only audit trail of changes to this knowledge base.
 
 Append-only audit trail. Add one dated entry per turn that creates, edits, or restructures content. The knowledge-base skill describes what to log and the entry shape.
 
+## 2026-07-30: Progress stat card + auto-update hook
+
+- Updated the plan's stat card to real counts: [personal-wiki-setup-plan](./plans/personal-wiki-setup-plan.md) — total 171 (180 raw − 9 superseded), completed 29, remaining 142
+- Added `scripts/update-plan-stats.sh` (bash, cross-platform) + `.git/hooks/pre-commit` in the wiki repo — recomputes the card whenever the plan is staged, so progress numbers can never go stale
+
 ## 2026-07-30: Vercel pipeline fixed — Task 1.2 verified
 
 - Test publish round-trip on my-digital-garden revealed Node.js 18.x discontinued; fixed via branch + PR #24 (`engines: node >=22`), merged, Vercel builds green (29s prod, 32s preview), live site verified serving updated content
