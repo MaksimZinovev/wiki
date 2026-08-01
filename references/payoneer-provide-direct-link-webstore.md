@@ -26,3 +26,9 @@ Facebook	Twitter	Linkdin	Youtube	Payoneer Forum	Payoneer Blog
 Actual revie wagainst Lifeliko web store page 
 
 
+- [ ] Your first name and last name
+- [ ] Your company name shown in your website email address
+- [ ] Your phone number
+- [ ] Your email address
+- [ ] Your primary address that matches the information your provided during registration
+- [ ] Your picture
