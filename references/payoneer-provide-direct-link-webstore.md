@@ -21,3 +21,8 @@ Reference Number:
 260718-004168
 Facebook	Twitter	Linkdin	Youtube	Payoneer Forum	Payoneer Blog
 [---002:000594:60790---]
+
+
+Actual revie wagainst Lifeliko web store page 
+
+
