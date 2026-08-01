@@ -8,6 +8,16 @@ tags:
   - troubleshooting
 title: Pi ACP chat fails until Ollama is running
 type: note
+questions:
+- q: Why does my Pi ACP chat return empty replies and retry messages?
+  generated:
+    by: cloud:deepseek-v4-flash
+- q: How can I fix Pi ACP chat when it fails to get a response?
+  generated:
+    by: cloud:deepseek-v4-flash
+- q: What is the pre-flight check to see if Ollama is running?
+  generated:
+    by: cloud:deepseek-v4-flash
 ---
 # Pi ACP chat fails until Ollama is running
 
