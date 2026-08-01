@@ -22,9 +22,7 @@ Reference Number:
 Facebook	Twitter	Linkdin	Youtube	Payoneer Forum	Payoneer Blog
 [---002:000594:60790---]
 
-
-Actual revie wagainst Lifeliko web store page 
-
+Actual review against Lifeliko web store page
 
 - [ ] Your first name and last name
 - [ ] Your company name shown in your website email address
