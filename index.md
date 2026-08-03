@@ -12,6 +12,7 @@ The navigation hub for this knowledge base. Start with [welcome](./welcome.md), 
 - [references/](./references/) — sources and citations you rely on (`type: reference`)
 - [notes/](./notes/) — working notes and observations (`type: note`)
   - [auto-updating-progress-card-pre-commit-hook](./notes/auto-updating-progress-card-pre-commit-hook.md) — how-to: stat card that recomputes plan progress on every commit
+  - [local-only-note-no-git-sync](./notes/local-only-note-no-git-sync.md) — Q&A: can a note be managed by OK but excluded from git/GitHub sync?
 - [external-sources/](./external-sources/) — raw sources saved verbatim (`type: source`) — OKF blog post, README, and SPEC
 - [research/](./research/) — provisional analysis synthesizing sources (`type: research`)
 - [articles/](./articles/) — canonical knowledge, promoted from research (`type: article`)
