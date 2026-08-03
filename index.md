@@ -10,6 +10,7 @@ The navigation hub for this knowledge base. Start with [welcome](./welcome.md), 
   - [wiki-architecture](./concepts/wiki-architecture.md) — central wiki repo + multiple publishing consumers
   - [frontmatter-conventions](./concepts/frontmatter-conventions.md) — YAML schema, `public` flag, copy script transformation
 - [references/](./references/) — sources and citations you rely on (`type: reference`)
+  - [ok-sync-engine-gitignore-behavior](./references/ok-sync-engine-gitignore-behavior.md) — how OK's ContentFilter and sync engine handle .gitignore/.okignore (verified via DeepWiki)
 - [notes/](./notes/) — working notes and observations (`type: note`)
   - [auto-updating-progress-card-pre-commit-hook](./notes/auto-updating-progress-card-pre-commit-hook.md) — how-to: stat card that recomputes plan progress on every commit
   - [local-only-note-no-git-sync](./notes/local-only-note-no-git-sync.md) — Q&A: can a note be managed by OK but excluded from git/GitHub sync?
