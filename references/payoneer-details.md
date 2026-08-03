@@ -4,7 +4,7 @@ tags:
   - amazon
 title: "Lifeliko Store Amazon"
 type: note
-private: "true"
+private: true
 ---
 
 
