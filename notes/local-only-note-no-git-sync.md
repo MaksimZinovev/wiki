@@ -9,7 +9,11 @@ title: Can I make a note local-only in OpenKnowledge — no git commit, no GitHu
 
 ## Note
 
-**Can I keep a note in my OpenKnowledge project local only — managed by OK (search, backlinks, lint) but never committed to git or pushed to GitHub?**
+### Question
+
+How can I keep a note in my OpenKnowledge project local only — managed by OK (search, backlinks, lint) but never committed to git or pushed to GitHub? I tried using `.gitignore` with a pattern like `*.local.md` and re-including it via `.okignore` negation.
+
+### Answer
 
 **Short answer: you can't have both.** OK has no per-note "don't sync" flag. The reason is that OK's versioning and its GitHub sync are the **same pipeline** — think of it like a conveyor belt: anything OK manages goes on the belt, and the belt delivers everything to GitHub. You can't put something on the belt and tell it to stop halfway.
 
