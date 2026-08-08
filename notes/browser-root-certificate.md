@@ -4,7 +4,7 @@ type: note
 description: "How browser root certificates and the chain of trust work, explained simply."
 created: 2026-08-08
 author: Maksim Zinovev
-tags: [note]
+tags: [ note, it-fundamentals ]
 ---
 
 ## Explain for 15 yo what is a root certificate in web browser
