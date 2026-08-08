@@ -1,6 +1,7 @@
 ---
+title: What is a root certificate in a web browser
 type: note
-description: "A freeform note."
+description: "How browser root certificates and the chain of trust work, explained simply."
 created: 2026-08-08
 author: Maksim Zinovev
 tags: [note]
@@ -8,11 +9,8 @@ tags: [note]
 
 ## Explain for 15 yo what is a root certificate in web browser
 
-<Callout type="info" collapsible={false} defaultOpen>
-  A **Root Certificate** is a "pre-approved" digital identity stored in your browser that allows it to trust other certificates without having to ask for permission every single time.
-</Callout>
-
-
+> [!NOTE]
+> A **Root Certificate** is a "pre-approved" digital identity stored in your browser that allows it to trust other certificates without having to ask for permission every single time.
 
 Imagine you are at an airport. You meet a stranger who claims to be a government official. You don’t know this person, so you don’t trust them.
 
@@ -22,9 +20,9 @@ Now, you still don’t know the person, but you **trust the Passport**. Why? Bec
 
 In this scenario:
 
-*   **The Person** = The Website (e.g., google.com)
-*   **The Passport** = The Website Certificate (SSL/TLS Certificate)
-*   **The Government** = The Root Certificate Authority (CA)
+* **The Person** = The Website (e.g., google.com)
+* **The Passport** = The Website Certificate (SSL/TLS Certificate)
+* **The Government** = The Root Certificate Authority (CA)
 
 Here is the breakdown of how this works in your browser.
 
@@ -56,10 +54,10 @@ When you install Chrome or macOS, you are essentially downloading a "List of Tru
 
 Usually, it’s not just one step. It’s a chain:
 
-1.  **The Root Certificate** (The Big Boss) $\rightarrow$ Trusts...
-2.  **The Intermediate Certificate** (The Manager) $\rightarrow$ Trusts...
-3.  **The Website Certificate** (The Employee/Website) $\rightarrow$ Trusts...
-4.  **The Website** $\rightarrow$ You!
+1. **The Root Certificate** (The Big Boss) $\rightarrow$ Trusts...
+2. **The Intermediate Certificate** (The Manager) $\rightarrow$ Trusts...
+3. **The Website Certificate** (The Employee/Website) $\rightarrow$ Trusts...
+4. **The Website** $\rightarrow$ You!
 
 Your browser follows this chain upward. If the chain eventually leads back to a **Root Certificate** that is already saved in your browser's "Trusted List," you see the **little padlock icon** in the address bar. Everything is secure.
 
@@ -69,11 +67,9 @@ If you visit a website and see a giant red warning saying **"Your connection is 
 
 This happens if:
 
-*   The website is using a fake certificate.
-*   The certificate was issued by a company that isn't in your browser's "Trusted List."
-*   The certificate has expired.
-
-
+* The website is using a fake certificate.
+* The certificate was issued by a company that isn't in your browser's "Trusted List."
+* The certificate has expired.
 
 Since the explanation had two parts—the **process** (how the conversation happens) and the **hierarchy** (the chain of trust)—I have created two separate diagrams for you.
 
@@ -112,15 +108,15 @@ This diagram shows how trust flows from the "Big Boss" (Root) down to the websit
 ```mermaid
 graph TD
     subgraph Browser_OS [Inside your Browser/OS]
-        Root[<b>Root Certificate</b><br/>'The Big Boss'<br/>Pre-installed & Trusted]
+        Root[Root Certificate<br/>'The Big Boss'<br/>Pre-installed & Trusted]
     end
 
     subgraph CA_Company [Certificate Authority Company]
-        Intermediate[<b>Intermediate Certificate</b><br/>'The Manager'<br/>Signed by Root]
+        Intermediate[Intermediate Certificate<br/>'The Manager'<br/>Signed by Root]
     end
 
     subgraph Web_Server [The Website Server]
-        Website[<b>Website Certificate</b><br/>'The Employee'<br/>Signed by Intermediate]
+        Website[Website Certificate<br/>'The Employee'<br/>Signed by Intermediate]
     end
 
     %% Trust Flow
@@ -135,9 +131,9 @@ graph TD
     style Browser_OS fill:#e2e3e5,stroke:#383d41,stroke-dasharray: 5 5
 ```
 
-### Quick Guide to the Diagrams:
+### Quick Guide to the Diagrams
 
-1.  **The Sequence Diagram:** Think of this as the **"Security Guard Check."** The browser is the guard, the website is the visitor, and the Root Store is the "Approved Guest List."
-2.  **The Hierarchy Diagram:** Think of this as a **"Family Tree of Trust."** The Root is the grandparent. If the grandparent is trusted, then the parent (Intermediate) is trusted, which means the child (Website) is trusted.
+1. **The Sequence Diagram:** Think of this as the **"Security Guard Check."** The browser is the guard, the website is the visitor, and the Root Store is the "Approved Guest List."
+2. **The Hierarchy Diagram:** Think of this as a **"Family Tree of Trust."** The Root is the grandparent. If the grandparent is trusted, then the parent (Intermediate) is trusted, which means the child (Website) is trusted.
 
 ## Links
