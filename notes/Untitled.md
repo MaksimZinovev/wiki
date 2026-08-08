@@ -8,13 +8,9 @@ tags: [note]
 
 ## Explain for 15 yo what is a root certificate in web browser
 
-<Callout type="note" collapsible={false} defaultOpen>
-
+<Callout type="info" collapsible={false} defaultOpen>
+  A **Root Certificate** is a "pre-approved" digital identity stored in your browser that allows it to trust other certificates without having to ask for permission every single time.
 </Callout>
-
-
-
-> **TLDR:&#x20;**A Root Certificate is a "pre-approved" digital identity stored in your browser that allows it to trust other certificates without having to ask for permission every single time.
 
 
 
