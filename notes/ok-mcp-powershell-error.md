@@ -25,10 +25,12 @@ tags: [note, mcp, debugging]
 - `git show HEAD:.codex/config.toml` → `command = "powershell"` (Windows version still committed).
 - Error `${syscall} ${command} ENOENT` (from `cross-spawn/lib/enoent.js`) proves the spawned command was literally `powershell`.
 
-## Fix
+## Fix & Resolution
 
 1. Restart Pi → reloads `/bin/sh` → connects.
 2. Commit corrected `.mcp.json`, `.codex/config.toml`, `.cursor/mcp.json` to stop the Windows version syncing.
+
+**Verified:** Problem solved after applying the fix and restarting the Pi coding agent.
 
 ## Links
 - [OpenKnowledge tooling index](../ok-index.md) — central hub for OK tooling notes
