@@ -31,3 +31,5 @@ tags: [note, mcp, debugging]
 2. Commit corrected `.mcp.json`, `.codex/config.toml`, `.cursor/mcp.json` to stop the Windows version syncing.
 
 ## Links
+- [OpenKnowledge tooling index](../ok-index.md) — central hub for OK tooling notes
+- [Pi ACP chat fails until Ollama is running](./pi-acp-ollama-connection-error.md) — related Pi/MCP connection debugging
